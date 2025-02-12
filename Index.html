@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine, Bibisa? ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: red;
+        }
+        .gif-container {
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine, Bibisa? ❤️</h1>
+    
+    <!-- Your initial GIF -->
+    <div class="gif-container">
+        <img id="gifImage" src="https://media.giphy.com/media/HNIZE1bTsXxWq1okyZ/giphy.gif" 
+             alt="Cute GIF" width="300">
+    </div>
+
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">Yes</button>
+        <button class="no" id="noBtn" onmouseover="moveNo()" onclick="changeGif()">No</button>
+    </div>
+</div>
+
+<script>
+    let yesClickedFlag = false;
+
+    function yesClicked() {
+        yesClickedFlag = true;
+        // Change the image to the happy dance GIF when "Yes" is clicked
+        document.getElementById("gifImage").src = "https://media.giphy.com/media/gnI3EdRuzrL3StP0Iz/giphy.gif";
+        alert("Yay! Can't wait to celebrate with you!");
+    }
+
+    function moveNo() {
+        let btn = document.getElementById("noBtn");
+        let x = Math.random() * (window.innerWidth - 100);
+        let y = Math.random() * (window.innerHeight - 50);
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
+    }
+
+    // Function to change GIF when "No" is clicked
+    function changeGif() {
+        if (!yesClickedFlag) {
+            const gifArray = [
+                "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif", // Spongebob sad
+                "https://media.giphy.com/media/ppuyo-KkklFx4wVfw5Ey9FTe/giphy.gif", // Zookiz sad
+                "https://media.giphy.com/media/dI53rvCkTsyJWFA3Fc/giphy.gif"  // Sad hamster
+            ];
+
+            // Select a random GIF from the array
+            const randomIndex = Math.floor(Math.random() * gifArray.length);
+            const selectedGif = gifArray[randomIndex];
+
+            // Update the image source to the new GIF
+            document.getElementById("gifImage").src = selectedGif;
+        }
+    }
+</script>
+
+</body>
+</html>
